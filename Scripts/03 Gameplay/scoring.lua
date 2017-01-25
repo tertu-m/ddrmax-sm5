@@ -1,7 +1,7 @@
 --This is a kinda weird implementation of MAX scoring, based ultimately on,
---once again, something at Aaron in Japan
---it might be more accurate to say, maybe, that this is a close relative 
---http://aaronin.jp/ddrssystem.html#ss5
+--once again, something at Aaron in Japan (http://aaronin.jp/ddrssystem.html#ss5)
+--it might be more accurate to say, maybe, that this is a close relative, because
+--i don't think it's point-for-point the same 
 MAXScoring = {}
 
 local max_score= 50000000
@@ -53,6 +53,7 @@ function MAXScoring.MakeScoring(steps, pn)
 					obj_counter = obj_counter + 1
 					raw_curscore = raw_curscore + (value_lut[tns] or 0)*obj_counter
 				end
+				tns_history[tns] = new_value
 			end
 		end
 	end
@@ -76,10 +77,10 @@ function MAXScoring.MakeScoring(steps, pn)
 		local total_bonus = 0
 		for category, max_bonus in pairs(radar_cats) do
 			total_bonus = total_bonus
-				+(actual_radar:GetValue(category)/poss_radar:GetValue(category))
+				+(actual_radar:GetValue(math.min(1,category))/poss_radar:GetValue(math.min(1,category)))
 				*max_bonus
 		end
-		return total_bonus
+		return exact and math.floor(total_bonus) or total_bonus
 	end
 	return state
 end
