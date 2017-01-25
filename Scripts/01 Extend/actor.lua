@@ -1,7 +1,7 @@
 function MAXActor(def, config)
 	config = config or {}
 	def.InitCommand = function(s)
-		local shouldFilter = config.filtering or global "filtering"
+		local shouldFilter = (config.filtering~=nil) and config.filtering or global "filtering"
 		s:SetTextureFiltering(shouldFilter)
 		if s:GetCommand("Init2") then
 			return s:playcommand("Init2")

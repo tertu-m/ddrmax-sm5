@@ -17,6 +17,15 @@ local value_lut =
 	TapNoteScore_W3 = 1	
 }
 
+local radar_cats = 
+{
+	RadarCategory_Stream = 20000000,
+	RadarCategory_Air = 10000000,
+	RadarCategory_Chaos = 10000000,
+	RadarCategory_Freeze = 10000000,
+	RadarCategory_Voltage = 10000000
+}
+
 function MAXScoring.MakeScoring(steps, pn)
 	local state = {}
 	local raw_maxpoints = FindPoints(steps:GetRadarValues(pn)
@@ -59,6 +68,18 @@ function MAXScoring.MakeScoring(steps, pn)
 		return out_score, out_maxscore
 	end
 
-	state.GetBonus
-
+	state.GetBonus =
+	function(exact)
+		local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
+		local actual_radar = pss:GetRadarActual()
+		local poss_radar = pss:GetRadarPossible()
+		local total_bonus = 0
+		for category, max_bonus in pairs(radar_cats) do
+			total_bonus = total_bonus
+				+(actual_radar:GetValue(category)/poss_radar:GetValue(category))
+				*max_bonus
+		end
+		return total_bonus
+	end
+	return state
 end
