@@ -1,0 +1,11 @@
+Most, if not all, graphics, fonts, and sounds present in this theme are owned by some subdivision of Konami Holdings Corporation and were used without permission.
+
+To the extent possible under law, I have dedicated all copyright and related and neighboring rights to all metrics and code written for this theme to the public domain worldwide. 
+This software is distributed without any warranty.
+You should have received a copy of the CC0 Public Domain Dedication (in the file cc0.txt) along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+Some scripts present in this theme were based in whole or in part on other code and are under different licenses.
+These are listed below:
+(currently none)
+
+That said, if you would like to credit me for code or metrics used in your theme, I would be very appreciative, but you are under no obligation to do so.
