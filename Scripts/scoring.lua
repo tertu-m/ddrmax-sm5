@@ -76,8 +76,10 @@ function MAXScoring.MakeScoring(steps, pn)
 		local poss_radar = pss:GetRadarPossible()
 		local total_bonus = 0
 		for category, max_bonus in pairs(radar_cats) do
+			local max_radar_val = math.min(1,poss_radar:GetValue(category))
 			total_bonus = total_bonus
-				+(actual_radar:GetValue(math.min(1,category))/poss_radar:GetValue(math.min(1,category)))
+				+(actual_radar:GetValue()/poss_radar:GetValue())
+				*max_radar_val
 				*max_bonus
 		end
 		return exact and math.floor(total_bonus) or total_bonus

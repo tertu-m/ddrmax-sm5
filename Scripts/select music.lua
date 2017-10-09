@@ -1,5 +1,5 @@
 function MusicWheelTransform(self,offsetFromCenter,itemIndex,numItems) 
-	self:x( (offsetFromCenter^2/10)*40 )
+	self:x( (offsetFromCenter*2)^2 + 16 )
 	self:y( offsetFromCenter*46 ) 
 end
 
