@@ -14,9 +14,13 @@ local function ScoringUpdate()
 		local pss = stg_stats:GetPlayerStageStats(pn)
 		pss:SetScore(curScore)
 		pss:SetCurMaxScore(curMaxScore)
+		--xxx: this is just not the way to do this
 		local score_display = top_screen:GetChild("Score"..ToEnumShortString(pn))
 		if score_display then
-			score_display:GetChild "Text":targetnumber(curScore)
+			--xxx: remove this later
+			if score_display:GetChild "Text" then
+				score_display:GetChild "Text":targetnumber(curScore)
+			end
 		end
 	end
 end

@@ -19,6 +19,5 @@ function LoadActorM( path, config, ... )
 end
 
 function Actor:FullScreen43()
-	SCREENMAN:SystemMessage(SCREEN_WIDTH_43)
 	return self:zoomto(SCREEN_WIDTH_43,SCREEN_HEIGHT)
 end
